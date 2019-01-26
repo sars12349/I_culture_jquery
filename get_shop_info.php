@@ -3,9 +3,9 @@
 
 	$link=create_connection();
     $kind=$_POST['kind'];
-	if($kind=='f'){
+	if($kind[1]=='f'){
 		$sql="SELECT * FROM shop WHERE Kind='f' ORDER BY Shop_ID ASC";
-	}else if($kind=='c'){
+	}else if($kind[1]=='c'){
 		$sql="SELECT * FROM shop WHERE Kind='c' ORDER BY Shop_ID ASC";
 	}	
 
