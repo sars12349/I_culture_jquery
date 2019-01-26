@@ -7,7 +7,8 @@
 		$sql="SELECT * FROM shop WHERE Kind='f' ORDER BY Shop_ID ASC";
 	}else if($kind[1]=='c'){
 		$sql="SELECT * FROM shop WHERE Kind='c' ORDER BY Shop_ID ASC";
-	}	
+	}else
+		$sql="SELECT * FROM shop ORDER BY Shop_ID ASC";
 
 	$result = excute_sql($link, "I_culture", $sql);
 

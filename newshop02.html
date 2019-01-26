@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-
 	<meta charset="UTF-8">
 	<meta name="viewport" content="device-width,initial-scale=1">
 	<title>Document</title>
@@ -14,14 +13,8 @@
 		<div data-role="header" data-theme="b">
 			<h2>店家介紹</h2>
 		</div>
-
 		<div data="main" class="ui-content">
-			<div  >				
-
-			</div>
-
 			<ul data-role="listview" data-inset="true" id="list">
-
 			</ul>
 			<!-- <ul data-role="listview" data-inset="true">
 			    <li><a href="#">
@@ -31,25 +24,23 @@
 			    </li>
 			</ul> -->
 		</div>
-
-		<div data-role="footer" data-position="fixed">
-			
+		<div data-role="footer" data-position="fixed" data-theme="b">
+			<h4>shop02</h4>
 		</div>
-	</div>	
+	</div>
 
-	<script>
-		console.log($.ajax);
-		var strUrl = location.search;
-		var ParaVal;
-		var aryPara = [];
+	<script language="javascript">		
+	    console.log($.ajax); //console 顯示訊息
+		var strUrl = location.search; //抓網址
+		var ParaVal=[];
+		var aryPara =[];
 
 		if (strUrl.indexOf("?") != -1) {
 		  var getSearch = strUrl.split("?");
 		  ParaVal = getSearch[1].split("=");
 		  //alert(ParaVal[1]);
 		}
-			// $sql="SELECT * FROM shop WHERE Kind='f' ORDER BY Shop_ID ASC";//sql語法
-			// alert("f");
+
 		$.ajax({
 			type:'POST',
 			url:'get_shop_info.php',							
@@ -60,20 +51,13 @@
 		});
 
 		function showlist(data){
-			alert(data);
+			// alert(data);
 			console.log(data);
 			for(i=0;i<data.length;i++){
-				$("#list").append('<li><a href="shop03.html?id='+i+'"><img src="image/p1.jpg"><h2>'+data[i].Name+'</h2><p>'+data[i].Introduce+'</p></a></li>');
+				$("#list").append('<li><a href="shop03.html?id='+i+'"><img src="image/p1.jpg"><h2>'+data[i].Name+'</h2><p>'+data[i].Introduce+'</p></a></li>').trigger("create");
 				$( "#list" ).listview( "refresh" );
 			}	
 		}
-
-		// $.get("get_shop_info.php",function(data){
-		// 	for(i=0;i<data.length;i++){
-		// 		$("#list").append('<li><a href="shop03.html?id='+i+'"><img src="image/p1.jpg"><h2>'+data[i].Name+'</h2><p>'+data[i].Introduce+'</p></a></li>');
-		// 		$( "#list" ).listview( "refresh" );
-		// 	}
-		// },"json");
 	</script>
 </body>
 </html>
