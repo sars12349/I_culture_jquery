@@ -1,0 +1,36 @@
+	.logo{
+		width: 250px;
+		margin-top: 50px;
+		margin-bottom: 0;
+		margin-right: auto;
+		margin-left: auto;  
+	}
+	.logob{
+		width: 100px;
+		margin-top: 50px;
+		margin-bottom: 30px;
+		margin-right: auto;
+		margin-left: auto;
+	}
+	.logob_01{
+		box-shadow: 3px 3px 10px 5px #949494;
+		border-radius: 10px 
+	}
+	.logob_02{
+		box-shadow: 3px 3px 10px 5px #949494;
+		border-radius: 50px
+	}
+	.ptext{
+		color:#B81313;
+		font-style: normal;
+		font-weight: bold;
+		font-size: 20px;
+		text-align: center;
+	}
+	.ptext h3{
+		color: #0786F0;
+	}
+	.ptext p{
+		color: #01FFA3;
+	}
+

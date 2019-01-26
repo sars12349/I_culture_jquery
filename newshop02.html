@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+	<meta charset="UTF-8">
+	<meta name="viewport" content="device-width,initial-scale=1">
+	<title>Document</title>
+	<link rel="stylesheet" href="css/jquery.mobile-1.4.5.min.css">
+	<script src="js/jquery-2.1.0.min.js"></script>
+	<script src="js/jquery.mobile-1.4.5.min.js"></script>
+	<script>
+		var strUrl = location.search;
+		var ParaVal;
+		var aryPara = [];
+
+		if (strUrl.indexOf("?") != -1) {
+		  var getSearch = strUrl.split("?");
+		  ParaVal = getSearch[1].split("=");
+		  //alert(ParaVal[1]);
+		}
+			// $sql="SELECT * FROM shop WHERE Kind='f' ORDER BY Shop_ID ASC";//sql語法
+			// alert("f");
+		$.ajax({
+			type:'POST',
+			url:'get_shop_info.php',							
+			data: {kind:ParaVal},
+			dataType:'json',
+			success: showlist,
+			error:function(){alert('Ajax request 發生錯誤');}			
+		});
+
+		function showlist(data){
+			for(i=0;i<data.length;i++){
+				$("#list").append('<li><a href="shop03.html?id='+i+'"><img src="image/p1.jpg"><h2>'+data[i].Name+'</h2><p>'+data[i].Introduce+'</p></a></li>');
+				$( "#list" ).listview( "refresh" );
+			}	
+		}
+
+		// $.get("get_shop_info.php",function(data){
+		// 	for(i=0;i<data.length;i++){
+		// 		$("#list").append('<li><a href="shop03.html?id='+i+'"><img src="image/p1.jpg"><h2>'+data[i].Name+'</h2><p>'+data[i].Introduce+'</p></a></li>');
+		// 		$( "#list" ).listview( "refresh" );
+		// 	}
+		// },"json");
+	</script>
+</head>
+<body>
+	<div data-role="page" id="home">
+		<div data-role="header" data-theme="b">
+			<h2>店家介紹</h2>
+		</div>
+
+		<div data="main" class="ui-content">
+			<div  >				
+
+			</div>
+
+			<ul data-role="listview" data-inset="true" id="list">
+
+			</ul>
+
+
+			<!-- <ul data-role="listview" data-inset="true">
+			    <li><a href="#">
+			        <img src="image/p1.jpg">
+				    <h2>泡芙之家</h2>
+				    <p>世界上最好吃的泡芙底家</p></a>
+			    </li>
+			</ul> -->
+		</div>
+
+		<div data-role="footer" data-position="fixed">
+			
+		</div>
+	</div>	
+</body>
+</html>

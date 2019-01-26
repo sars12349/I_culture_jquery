@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+	<meta charset="UTF-8">
+	<meta name="viewport" content="device-width,initial-scale=1">
+	<title>Document</title>
+	<link rel="stylesheet" href="css/jquery.mobile-1.4.5.min.css">
+	<script src="js/jquery-2.1.0.min.js"></script>
+	<script src="js/jquery.mobile-1.4.5.min.js"></script>
+	<style>
+		.img01{
+		width: 90%;
+		height: ;
+		padding-top: 15px;
+		} 
+	</style>
+</head>
+<body>
+	<div data-role="page" id="shop03">
+		<div data-role="header" data-theme="b">
+			<h2>店家介紹</h2>
+		</div>
+
+		<div data="main" class="ui-content">
+			<img src="https://api.fnkr.net/testimg/350x200/00CED1/FFF/?text=img+placeholder" class="img01" style="display:block; margin:auto;" width="100%">
+
+
+			<h2 style="color:purple; margin-left:10px; ">泡芙的家</h2>
+
+			<div class="ui-grid-c">
+				<div class="ui-block-a">
+					<a href="" data-role="button" style="background-color:#F50000; color:#FFFF3B; font-size:10px;">商品介紹</a>					
+				</div>
+				<div class="ui-block-b">
+					<a href="#popup1" data-rel="popup" data-role="button" style="background-color:#F50000; color:#FFFF3B; font-size:10px;">店家位置</a>
+					<div data-role="popup" id="popup1">
+					<a href="#" data-rel="back" data-role="button" data-icon="delete" data-iconpos="notext" class="ui-btn-right">Close</a>
+					<img src="image/map.jpg" style="max-height:512px;"/>
+					</div>
+
+
+				</div>
+				<div class="ui-block-c">
+					<a href="#popup2" data-role="button" data-rel="popup" style="background-color:#F50000; color:#FFFF3B; font-size:10px;">我要評論</a>
+					<div data-role="popup" id="popup2">
+						<div>
+							<h3>我要評論</h3>
+							<div data-role="fieldcontain">
+								<label for="message"></label>
+    							<textarea name="message" id="message"></textarea>
+							</div>	
+							<div class="ui-grid-a">
+								<div class="ui-block-a">
+									<a href="#" data-role="button" data-rel="back">取消並返回</a>
+								</div>
+								<div class="ui-block-b">
+									<a href="" data-role="button">確認並送出</a>
+								</div>
+								
+							</div>	
+						</div>
+					</div>
+
+
+				</div>
+				<div class="ui-block-d">
+					<img src="image/heart.png" style="display:block; margin:auto; margin-top:10px; ">
+				</div>
+			</div>
+
+
+			<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+			tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+			quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+			consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+			cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+			proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+
+
+			<ul data-role="listview">
+				<li><a href="#"><img src="image/7x5.jfif"<h3>金X5</h3><p>好吃!!!!!!
+				</p></a></li>
+				<li><a href="#"><img src="image/7x5.jfif"<h3>金X5</h3><p>好吃!!!!!!
+				</p></a></li>
+				<li><a href="#"><img src="image/7x5.jfif"<h3>金X5</h3><p>好吃!!!!!!
+				</p></a></li>
+			</ul>
+
+
+		</div>
+
+		
+
+		<div data-role="footer" data-position="fixed">
+			
+		</div>
+	</div>
+</body>
+</html>

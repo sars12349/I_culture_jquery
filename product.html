@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+	<meta charset="UTF-8">
+	<meta name="viewport" content="device-width,initial-scale=1">
+	<title>Document</title>
+	<link rel="stylesheet" href="css/jquery.mobile-1.4.5.min.css">
+	<script src="js/jquery-2.1.0.min.js"></script>
+	<script src="js/jquery.mobile-1.4.5.min.js"></script>
+</head>
+<body>
+	<div data-role="page" id="product" style="background-color: black">
+		<div data-role="header" data-theme="b">
+			<h2>店家介紹</h2>
+		</div>
+
+		<div data="main" class="ui-content">
+			<a href="#popup_1" data-rel="popup" data-position-to="window">
+				<img src="image/p1.jpg" style="width:100%"/>
+			</a>
+
+			<div data-role="popup" id="popup_1">
+			<a href="#" data-rel="back" data-role="button" data-icon="delete" data-iconpos="notext" class="ui-btn-right">Close</a>
+			<img src="image/p1.jpg" style="max-height:512px;"/>
+			</div>
+
+			<a href="#popup_2" data-rel="popup" data-position-to="window">
+				<img src="image/p2.jpg" style="width:49%"/>
+			</a>
+
+			<div data-role="popup" id="popup_2">
+			<a href="#" data-rel="back" data-role="button" data-icon="delete" data-iconpos="notext" class="ui-btn-right">Close</a>
+			<img src="image/p2.jpg" style="max-height:512px;"/>
+			</div>
+
+			<a href="#popup_3" data-rel="popup" data-position-to="window">
+				<img src="image/p3.jpg" style="width:49%"/>
+			</a>
+
+			<div data-role="popup" id="popup_3">
+			<a href="#" data-rel="back" data-role="button" data-icon="delete" data-iconpos="notext" class="ui-btn-right">Close</a>
+			<img src="image/p3.jpg" style="max-height:512px;"/>
+			</div>
+			
+		</div>
+
+		<div data-role="footer" data-position="fixed">
+			
+		</div>
+	</div>	
+</body>
+</html>
