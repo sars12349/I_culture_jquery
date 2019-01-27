@@ -2,14 +2,9 @@
 	require_once("dbtools.inc.php");
 
 	$link=create_connection();
-    $kind=$_POST['kind'];
-
-	if($kind[1]=='f'){
-		$sql="SELECT * FROM shop WHERE Kind='f' ORDER BY Shop_ID ASC";
-	}else if($kind[1]=='c'){
-		$sql="SELECT * FROM shop WHERE Kind='c' ORDER BY Shop_ID ASC";
-	}else
-		$sql="SELECT * FROM shop ORDER BY Shop_ID ASC";
+	
+	$sql=$_POST['msg_sql'];
+	// $sql="SELECT * FROM shop_message ORDER BY Shop_ID ASC";
 
 	$result = excute_sql($link, "I_culture", $sql);
 

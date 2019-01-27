@@ -54,7 +54,7 @@
 			// alert(data);
 			console.log(data);
 			for(i=0;i<data.length;i++){
-				$("#list").append('<li><a href="shop03.html?id='+i+'"><img src="image/p1.jpg"><h2>'+data[i].Name+'</h2><p>'+data[i].Introduce+'</p></a></li>').trigger("create");
+				$("#list").append('<li><a href="shop03.html?id='+data[i].Shop_ID+'" data-ajax="false"><img src="image/p1.jpg"><h2>'+data[i].Name+'</h2><p>'+data[i].Introduce+'</p></a></li>').trigger("create");
 				$( "#list" ).listview( "refresh" );
 			}	
 		}

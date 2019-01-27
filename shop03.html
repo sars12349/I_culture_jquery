@@ -14,7 +14,7 @@
 		height: ;
 		padding-top: 15px;
 		} 
-	</style>
+	</style>	
 </head>
 <body>
 	<div data-role="page" id="shop03">
@@ -26,11 +26,11 @@
 			<img src="https://api.fnkr.net/testimg/350x200/00CED1/FFF/?text=img+placeholder" class="img01" style="display:block; margin:auto;" width="100%">
 
 
-			<h2 style="color:purple; margin-left:10px; ">泡芙的家</h2>
+			<h2 style="color:purple; margin-left:10px; " id="title">泡芙的家</h2>
 
 			<div class="ui-grid-c">
 				<div class="ui-block-a">
-					<a href="" data-role="button" style="background-color:#F50000; color:#FFFF3B; font-size:10px;">商品介紹</a>					
+					<a href="" data-role="button" style="background-color:#F50000; color:#FFFF3B; font-size:10px;" id="btn_product" data-ajax="false">商品介紹</a>					
 				</div>
 				<div class="ui-block-b">
 					<a href="#popup1" data-rel="popup" data-role="button" style="background-color:#F50000; color:#FFFF3B; font-size:10px;">店家位置</a>
@@ -70,7 +70,7 @@
 			</div>
 
 
-			<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+			<p id="content">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
 			tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
 			quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
 			consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
@@ -88,6 +88,56 @@
 			</ul>
 
 
+			<script language="javascript">		
+			    var strUrl = location.search; //抓網址
+				var ParaVal=[];
+				var aryPara =[];
+
+				if (strUrl.indexOf("?") != -1) {
+				  var getSearch = strUrl.split("?");
+				  ParaVal = getSearch[1].split("=");
+				  var shop_id=ParaVal[1]-1;
+				  alert(shop_id);
+				}
+
+				$.ajax({
+					type:'POST',
+					url:'get_shop_info.php',							
+					data: {kind:ParaVal},
+					dataType:'json',
+					success: showlist,
+					error:function(){alert('Ajax request 發生錯誤');}			
+				});
+
+				function showlist(data){
+					// alert(data);
+					// console.log(data);
+					// for(i=0;i<data.length;i++){
+					// 	$("#list").append('<li><a href="shop03.html?id='+data[i].Shop_ID+'"><img src="image/p1.jpg"><h2>'+data[i].Name+'</h2><p>'+data[i].Introduce+'</p></a></li>').trigger("create");
+					// 	$( "#list" ).listview( "refresh" );
+					// }	
+					$("#title").html(data[shop_id].Name);
+					$("#content").html(data[shop_id].Introduce+"<br>");
+					$("#btn_product").attr("href","product.html?"+shop_id);
+				}
+				//var msg_sql=[];
+				var msg_sql="SELECT * FROM `shop_message` WHERE Shop_ID="+(shop_id+1);
+				$.ajax({
+					type:'POST',
+					url:'get_message_info.php',
+					data:{msg_sql:msg_sql},				
+					dataType:'json',
+					success: showmessage,
+					error:function(){alert('Ajax request 發生錯誤');}		
+				});
+
+				function showmessage(data){
+					for(i=0;i<data.length;i++){
+						$("#content").append(data[i].Message);
+					}
+					alert(msg_sql);					
+				}
+			</script>
 		</div>
 
 		

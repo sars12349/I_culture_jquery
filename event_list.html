@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet"  href="css/jquery.mobile-1.4.5.min.css">
+	<script src="js/jquery-2.1.0.min.js"></script>
+	<script src="js/jquery.mobile-1.4.5.min.js"></script>
+	<script>
+		$(function(){
+			$.ajax({
+				type:"GET",
+				url:"https://tcnr1624.000webhostapp.com/select_db.php",
+				dataType:"json",//將收到資料轉成json
+				success:show,
+				error:function(){
+					alert("資料錯誤");
+				}
+			});
+		});
+		function show(data){
+			// alert(data.length);//顯示資料筆數
+			for(i=0; i<data.length;i++){
+
+			//將陣列用for寫成 就會逐筆顯示 若只想顯示n筆就寫 data[n] ex data[1]
+				// $("#msg").append(data[i].book_id+data[i].image_name+data[i].description+"<BR>");//原本用html會蓋掉 故用append就會顯示每筆資料
+				
+				// $("#msg").append('<img src="image/'+data[i].Event_Image+'" width="5%" alt="">')//顯示每筆圖片
+
+				// $("#msg").append('<ul data-role="listview"><li data-role="list-divider">近期活動</li> <li><a href="#event_content"><img src="image/'+data[i].Event_Image+'" width="5%" alt=""  ><h2>'+data[i].Event_Date+'</h2><p>'+data[i].Event_Title+'</p></a></li></ul>')
+			$("#list").append('<li><a href="#event_content"><img src="image/'+data[i].Event_Image+'"><h2>'+data[i].Event_Date+'</h2><p>'+data[i].Event_Title+'</p></a></li>');
+      		$( "#list" ).listview( "refresh" );  					
+
+			}
+		}
+	</script>
+</head>
+<body>
+	<div data-role="page" id="home" >
+		<div data-role="header" data-theme="b">
+			<h1>Home</h1>
+		</div>
+		<div role="main" class="ui-content">
+
+			<!--不用迴圈 直接appaen進<ul> -->
+			<ul data-role="listview" data-inset="true" id="list"></ul>
+
+		</div>
+
+		      
+		<div data-role="footer" data-position="fixed" data-theme="b">
+			<h4>Footer</h4>
+		</div>	
+	</div>	
+</body>
+</html>		
