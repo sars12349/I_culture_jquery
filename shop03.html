@@ -70,15 +70,10 @@
 			</div>
 
 
-			<p id="content">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-			tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-			quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-			consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-			cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-			proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+			<p id="content">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod</p>
 
 
-			<ul data-role="listview">
+			<ul data-role="listview" id="message_list">
 				<li><a href="#"><img src="image/7x5.jfif"<h3>金X5</h3><p>好吃!!!!!!
 				</p></a></li>
 				<li><a href="#"><img src="image/7x5.jfif"<h3>金X5</h3><p>好吃!!!!!!
@@ -97,7 +92,7 @@
 				  var getSearch = strUrl.split("?");
 				  ParaVal = getSearch[1].split("=");
 				  var shop_id=ParaVal[1]-1;
-				  alert(shop_id);
+				  console.log(shop_id);
 				}
 
 				$.ajax({
@@ -118,10 +113,10 @@
 					// }	
 					$("#title").html(data[shop_id].Name);
 					$("#content").html(data[shop_id].Introduce+"<br>");
-					$("#btn_product").attr("href","product.html?"+shop_id);
+					$("#btn_product").attr("href","product.html?id="+(shop_id+1));
 				}
 				//var msg_sql=[];
-				var msg_sql="SELECT * FROM `shop_message` WHERE Shop_ID="+(shop_id+1);
+				var msg_sql="SELECT * FROM `shop_message` WHERE Shop_ID="+(shop_id+1)+" ORDER BY Messahe_date ASC";
 				$.ajax({
 					type:'POST',
 					url:'get_message_info.php',
@@ -132,10 +127,13 @@
 				});
 
 				function showmessage(data){
+					$("#message_list").empty();
 					for(i=0;i<data.length;i++){
-						$("#content").append(data[i].Message);
+						$("#message_list").append('<li><a href="#"><img src="image/7x5.jfif"<h3>'+data[i].User_name+'</h3><p>'+data[i].Message+'</p></a></li>');
+						
 					}
-					alert(msg_sql);					
+					$("#message_list").listview("refresh");
+					console.log(msg_sql);					
 				}
 			</script>
 		</div>

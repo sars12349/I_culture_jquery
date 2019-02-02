@@ -8,6 +8,37 @@
 	<link rel="stylesheet" href="css/jquery.mobile-1.4.5.min.css">
 	<script src="js/jquery-2.1.0.min.js"></script>
 	<script src="js/jquery.mobile-1.4.5.min.js"></script>
+	<script language="javascript">
+		var strUrl = location.search;//抓網址
+		var ParaVal=[];
+		var aryPara =[];
+
+		if (strUrl.indexOf("?") != -1){
+		  var getSearch = strUrl.split("?");
+		  ParaVal = getSearch[1].split("=");
+		  var shop_id=ParaVal[1]-1;
+		  console.log(ParaVal[1]);
+		}
+
+		$.ajax({
+			type:'POST',
+			url:'get_product_info.php',					
+			data: {shopid:ParaVal},
+			dataType:'json',
+			success: showproduct,
+			error:function(){alert('Ajax request 發生錯誤');}
+		});
+
+		function showproduct(data){
+			console.log(data);
+			$("#product").empty();
+			$("#product").append('<a href="#popup_0" data-rel="popup" data-position-to="window"><img src="image/product/'+data[0].Product_image+'" style="width:100%"/></a><div data-role="popup" id="popup_0"><a href="#" data-rel="back" data-role="button" data-icon="delete" data-iconpos="notext" class="ui-btn-right">Close</a><img src="image/product/'+data[0].Product_image+'" style="max-height:512px;"/><p>'+data[0].Product_name+'</p><p>'+data[0].Product_msg+'</p></div>').trigger("create");
+			for(i=1;i<data.length;i++){
+				$("#product").append('<a href="#popup_'+i+'" data-rel="popup" data-position-to="window"><img src="image/product/'+data[i].Product_image+'" style="width:49%"/></a><div data-role="popup" id="popup_'+i+'"><a href="#" data-rel="back" data-role="button" data-icon="delete" data-iconpos="notext" class="ui-btn-right">Close</a><img src="image/product/'+data[i].Product_image+'" style="max-height:512px;"/><p>'+data[i].Product_name+'</p><p>'+data[i].Product_msg+'</p></div>').trigger("create");
+				
+			}	
+		}
+	</script>
 </head>
 <body>
 	<div data-role="page" id="product" style="background-color: black">
@@ -15,7 +46,7 @@
 			<h2>店家介紹</h2>
 		</div>
 
-		<div data="main" class="ui-content">
+		<div data="main" class="ui-content" id="product">
 			<a href="#popup_1" data-rel="popup" data-position-to="window">
 				<img src="image/p1.jpg" style="width:100%"/>
 			</a>
@@ -23,6 +54,8 @@
 			<div data-role="popup" id="popup_1">
 			<a href="#" data-rel="back" data-role="button" data-icon="delete" data-iconpos="notext" class="ui-btn-right">Close</a>
 			<img src="image/p1.jpg" style="max-height:512px;"/>
+			<p>123</p>
+			<p>456</p>
 			</div>
 
 			<a href="#popup_2" data-rel="popup" data-position-to="window">
